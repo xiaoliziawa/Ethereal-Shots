@@ -1,6 +1,7 @@
 package net.prizowo.ethereal_shots.enchant;
 
 import net.minecraft.world.entity.EquipmentSlot;
+import net.minecraft.world.item.BowItem;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Items;
 import net.minecraft.world.item.enchantment.Enchantment;
@@ -30,7 +31,8 @@ public class EtherealShotsEnchantment extends Enchantment {
 
     @Override
     public boolean canEnchant(ItemStack stack) {
-        return stack.getItem() == Items.BOW;
+        // Support all BowItem instances, not just vanilla bow
+        return stack.getItem() instanceof BowItem;
     }
 
     @Override
