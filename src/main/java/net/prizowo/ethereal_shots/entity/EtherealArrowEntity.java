@@ -7,6 +7,7 @@ import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.phys.BlockHitResult;
 import net.minecraft.world.phys.EntityHitResult;
+import net.minecraft.world.phys.Vec3;
 import org.jetbrains.annotations.NotNull;
 
 public class EtherealArrowEntity extends AbstractArrow {
@@ -36,5 +37,14 @@ public class EtherealArrowEntity extends AbstractArrow {
     @Override
     public boolean shouldRender(double x, double y, double z) {
         return true;
+    }
+    
+    @Override
+    public void tick() {
+        super.tick();
+        if (!this.inGround) {
+            Vec3 motion = this.getDeltaMovement();
+            this.setDeltaMovement(motion.x, motion.y - 0.01F, motion.z);
+        }
     }
 }
